@@ -1,0 +1,65 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>Landing View</h1>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <section class="col-md-6">
+        <h2>New User:</h2>
+        <form #regForm="ngForm" (ngSubmit)="validateRegForm(regForm)">
+          <p>Account Name:<br> can only be upper or lower case letters and numbers, but may not start with a number<br>
+            <input type="text" [(ngModel)]="profile.name" name="name" pattern="[a-zA-Z][a-zA-Z0-9]+" required ngModel></p>
+
+          <p>Email Address:<br>
+            <input type="email" [(ngModel)]="profile.mail" name="email" pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required ngModel></p>
+
+          <p>Phone Number: 123-123-1234<br>
+            <input type="tel" [(ngModel)]="profile.phone" name="phone" pattern="\d{3}-\d{3}-\d{4}" required ngModel></p>
+
+          <p>Date of Birth:<br>
+            <input type="date" [(ngModel)]="profile.dob" name="dob" required ngModel>
+            <br><span>{{dobAlert}}</span></p>
+
+          <p>Zipcode:<br>
+            <input type="text" [(ngModel)]="profile.zipcode" name="zipcode" pattern="[0-9]{5}" required ngModel></p>
+
+          <p>Password:<br>
+            <input type="password" [(ngModel)]="profile.psw" name="psw" required ngModel></p>
+
+          <p>Password Confirmation:<br>
+            <input type="password" [(ngModel)]="_pswc" name="pswc" required ngModel>
+            <br><span>{{pswAlert}}</span></p>
+
+          <p *ngIf="regForm.invalid">Please fill in all required fields.</p>
+          <input type="submit" name="registerBtn" value="Register">
+          <input type="reset" value="Clear">
+        </form>
+        <div name="regAlert">{{regAlert}}</div>
+      </section>
+
+      <section class="col-md-6">
+        <h2>Existing user please login:</h2>
+        <form #logForm="ngForm" (ngSubmit)="validateLogForm(logForm)" method="POST">
+          <p>Username:<br>
+            <input type="text" [(ngModel)]="_logname" name="logname" id="username" required ngModel></p>
+
+          <p>Password:<br>
+            <input type="password" [(ngModel)]="_logpsw" name="logpsw" id="password" required ngModel></p>
+
+          <p *ngIf="logForm.invalid">Please fill in all required fields.</p>
+          <div id="div">{{logAlert}}</div>
+          <input name="loginBtn" type="submit" value="Log in">
+          <input type="reset" value="Clear">
+        </form>
+        <br>
+        <button (click)="facebookLogin()" class="loginBtn loginBtn--facebook">Login with Facebook</button>
+      </section>
+    </div>
+  </div>
+</body>

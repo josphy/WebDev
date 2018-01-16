@@ -1,0 +1,104 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<header>
+		<mat-toolbar color="primary">
+			<nav>
+				<a name="logout" (click)="logout()" href="#/auth">Log Out</a>
+				<a name="navToProfile" href="#/profile">User's Profile</a>
+			</nav>
+		</mat-toolbar>
+	</header>
+
+	<h1>Main View</h1>
+	<i class="fa fa-refresh" name="refreshBtn" (click)="ngOnInit()" aria-hidden="true"></i>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<aside id="profile">
+					<br><img src={{profile?.img}} class="icon">
+					<div>{{profile?.name}}</div>
+					<div name="status">{{profile?.headline}}</div>
+					<br><input #newStatus name="newStatus" placeholder="Enter new status">
+					<button name="statusBtn" (click)="updateStatus(newStatus.value)">Update</button>
+				</aside>
+			</div>
+
+			<div class="col-md-9">
+				<div>
+					<textarea [(ngModel)]="newPost" name="newPost"></textarea>
+				</div>
+				<form id="uploadPic">
+					<input #postPic id="choosePic" type="file" name="pic" accept="image/*">
+				</form>
+				<button name=postBtn (click)="post(newPost, postPic.files); postPic.value=''">Post</button>
+				<button (click)="clearPost()">Cancel</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<aside class="col-md-3">
+				<h2>Following</h2>
+				<div *ngFor="let following of followings">
+					<ul class="followings" id={{following?.id}}>
+						<img src={{following?.img}} class="icon">
+						<br>{{following?.name}}
+						<br>{{following?.headline}}
+						<br><button name={{following.name}} class="unfollowBtn" (click)="unfollow(following.id)">Unfollow</button>
+					</ul>
+				</div>
+
+				<div>
+					<input #newFollowing name="newFollowing" placeholder="new following id">
+					<button name="followBtn" (click)="addFollowing(newFollowing.value); newFollowing.value=''">Add</button>
+					<p>{{followingAlert}}</p>
+				</div>
+			</aside>
+
+			<div class="col-md-9">
+				<h2>User Feeds</h2> Article Search:
+				<input #filter name="keyword" placeholder="keywords...">
+				<button (click)="searchAuthor(filter.value)">By Author</button>
+				<button name="searchContentBtn" (click)="searchContent(filter.value)">By Content</button>
+				<button (click)="getArticles()">Cancel</button>
+
+				<mat-card class="article-card" *ngFor="let article of articles">
+					<mat-card-header>
+						<mat-card-title name="postAuthor">{{article?.author}}</mat-card-title>
+						<mat-card-subtitle>{{article?.date}}</mat-card-subtitle>
+					</mat-card-header>
+					<mat-card-content>
+						<img md-card-image src={{article?.img}} class="postImg">
+						<div #postContent name="postContent" contenteditable="true">{{article?.text}}</div>
+					</mat-card-content>
+					<mat-card-actions>
+						<button mat-button (click)="toggleComment(article._id)">COMMENT</button>
+						<button mat-button name="editBtn" (click)="editPost(article._id, postContent.innerHTML)">EDIT</button>
+					</mat-card-actions>
+
+					<div *ngIf="showComment">
+						<mat-card class="enter-comment">
+							<textarea #newComment>Enter comment here.</textarea>
+							<mat-card-actions>
+								<button mat-button (click)="postComment(article._id, newComment.value)">COMMENT</button>
+							</mat-card-actions>
+						</mat-card>
+						<mat-card class="comment-card" *ngFor="let comment of article.comments">
+							<mat-card-title>{{comment.author}}</mat-card-title>
+							<mat-card-content>
+								<div #commentContent contenteditable="true">{{comment.text}}</div>
+								<button mat-button (click)="editComment(article._id, comment.commentId, commentContent.innerHTML)">EDIT</button>
+							</mat-card-content>
+						</mat-card>
+					</div>
+
+				</mat-card>
+			</div>
+		</div>
+	</div>
+</body>

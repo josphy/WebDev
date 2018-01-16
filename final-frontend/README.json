@@ -1,0 +1,6 @@
+{
+  "netid": "hz56",
+  "frontend": "https://hz56final.surge.sh",
+  "backend": "https://hz56backend.herokuapp.com",
+  "slipday": "use 2 slip days"
+}

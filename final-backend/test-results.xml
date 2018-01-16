@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.297" tests="6" failures="0">
+  <testsuite name="Root Suite" timestamp="2017-11-17T02:41:04" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Validate POST /article functionality" timestamp="2017-11-17T02:41:04" tests="4" file="/Users/haoshan/Desktop/COMP531/hz56/comp431_531/hw6-backend/src/articles.spec.js" failures="0" time="0.19899999999999998">
+    <testcase name="Validate POST /article functionality should give me ten or more articles" time="0.089" classname="should give me ten or more articles">
+    </testcase>
+    <testcase name="Validate POST /article functionality should post an article, and return the article in response" time="0.055" classname="should post an article, and return the article in response">
+    </testcase>
+    <testcase name="Validate POST /article functionality should return an article with a specified id" time="0.052" classname="should return an article with a specified id">
+    </testcase>
+    <testcase name="Validate POST /article functionality should return nothing for an invalid id" time="0.003" classname="should return nothing for an invalid id">
+    </testcase>
+  </testsuite>
+  <testsuite name="Validate PUT /headline functionality" timestamp="2017-11-17T02:41:04" tests="2" file="/Users/haoshan/Desktop/COMP531/hz56/comp431_531/hw6-backend/src/profile.spec.js" failures="0" time="0.098">
+    <testcase name="Validate PUT /headline functionality should update the headline" time="0.05" classname="should update the headline">
+    </testcase>
+    <testcase name="Validate PUT /headline functionality has updated the headline in database" time="0.048" classname="has updated the headline in database">
+    </testcase>
+  </testsuite>
+</testsuites>

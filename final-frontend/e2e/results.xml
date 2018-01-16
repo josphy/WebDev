@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="front-end App" timestamp="2017-11-15T17:00:31" hostname="localhost" time="5.406" errors="0" tests="13" skipped="0" disabled="0" failures="0">
+  <testcase classname="front-end App" name="should display welcome message" time="1.535" />
+  <testcase classname="front-end App" name="Register a new user" time="0.98" />
+  <testcase classname="front-end App" name="Log in as your test user" time="0.411" />
+  <testcase classname="front-end App" name="Create a new article and validate the article appears in the feed" time="0.257" />
+  <testcase classname="front-end App" name="Edit an article and validate the article text has updated" time="0.293" />
+  <testcase classname="front-end App" name="Update the status headline and verify the change" time="0.263" />
+  <testcase classname="front-end App" name="Count the number of followed users" time="0.103" />
+  <testcase classname="front-end App" name="Add the user &quot;Follower&quot; to the list of followed users and verify the count increases by one" time="0.272" />
+  <testcase classname="front-end App" name="Remove the user &quot;Follower&quot; from the list of followed users and verify the count decreases by one" time="0.1" />
+  <testcase classname="front-end App" name="Search for Only One Article Like This and verify only one article shows, and verify the author" time="0.278" />
+  <testcase classname="front-end App" name="Navigate to the profile view, Update the user&apos;s email and verify" time="0.384" />
+  <testcase classname="front-end App" name="Navigate to the profile view, Update the user&apos;s zipcode and verify" time="0.19" />
+  <testcase classname="front-end App" name="Navigate to the profile view, Update the user&apos;s password and verify" time="0.337" />
+ </testsuite>
+</testsuites>

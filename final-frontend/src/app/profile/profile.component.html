@@ -1,0 +1,65 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Profile View</h1>
+		<div id="goto"><a href="#/main">Return to Main Page</a></div>
+		<br>
+
+		<div>
+			<div><img src={{profile?.img}} class="icon"></div>
+			<form id="uploadPic" enctype="multipart/form-data">
+				<input id="choosePic" (change)="updateAvatar($event)" type="file" name="pic" accept="image/*">
+			</form>
+		</div>
+		<br>
+
+		<div class="col-md-offset-3 text-left">
+			<ul>
+				<label>Display Name:</label>
+				<span>{{profile?.name}}</span>
+			</ul>
+			<ul>
+				<label>Email Address:</label>
+				<span name="email">{{profile?.mail}}</span>
+				<input name="newEmail" [(ngModel)]="newProfile.mail">
+			</ul>
+			<ul>
+				<label>Date of Birth:</label>
+				<span>{{profile?.dob}}</span>
+			</ul>
+			<ul>
+				<label>Zipcode:</label>
+				<span name="zipcode">{{profile?.zipcode}}</span>
+				<input name="newZipcode" [(ngModel)]="newProfile.zipcode">
+			</ul>
+			<ul>
+				<label>Password:</label>
+				<span name="psw">{{profile?.psw}}</span>
+				<input name="newPsw" type="password" [(ngModel)]="newProfile.psw">
+			</ul>
+			<ul>
+				<label>Password Confirmation:</label>
+				<input name="newPswc" type="password" [(ngModel)]="_pswc">
+			</ul>
+		</div>
+
+		<div><button name="updateBtn" (click)="validateUpdate()">Update</button></div>
+		<br>
+		<div>{{info}}</div>
+
+		<div *ngIf="isLocalAccount">
+			<button (click)="facebookLink()" class="loginBtn loginBtn--facebook">Link Facebook</button>
+			<button (click)="facebookUnlink()" class="loginBtn loginBtn--facebook">Unlink Facebook</button>
+		</div>
+		<div *ngIf="isThirdParty">
+			<p><input #localname type="string" placeholder="local account name"></p>
+			<p><input #localpsw type="password" placeholder="local account password"></p>
+			<p><button (click)="localLink(localname.value, localpsw.value);localname.value='';localpsw.value=''" class="loginBtn loginBtn--facebook">Link Local Account</button></p>
+		</div>
+
+	</div>
+</body>

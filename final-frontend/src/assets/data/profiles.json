@@ -1,0 +1,23 @@
+{"profiles":[
+  {
+  "name":"hz56",
+  "mail":"kitkat@rice.edu",
+  "img":"http://static.tumblr.com/125gbsg/G0wlvcmvr/kitkat.jpg",
+  "headline":"Enjoying the weather.",
+  "phone":"123-123-1234",
+  "dob":"1980-01-01",
+  "zipcode":"77005",
+  "psw":"fine-thank-you"
+},
+{
+  "name":"hz56test",
+  "mail":"oreo@rice.edu",
+  "img":"https://ih1.redbubble.net/image.172383890.7404/flat,800x800,075,f.jpg",
+  "headline":"I do not understand mocking.",
+  "phone":"123-123-1234",
+  "dob":"1981-11-11",
+  "zipcode":"77005",
+  "psw":"not-at-all"
+  }
+]
+}
